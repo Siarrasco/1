@@ -12,6 +12,7 @@
             color: #333;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         .container {
             max-width: 600px;
@@ -47,6 +48,25 @@
             margin-top: 20px;
             font-size: 20px;
         }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -56,28 +76,28 @@
 
         <div id="quiz">
             <div class="question" id="question1">
-                <p>Co jest lepsze na randkę?</p>
-                <button class="btn" onclick="nextQuestion(2)">Kolacja</button>
-                <button class="btn" onclick="nextQuestion(2)">Spacer</button>
+                <p>Czy jesteś pierdołą?</p>
+                <button class="btn" onclick="nextQuestion(2)">Tak</button>
+                <button class="btn" onclick="nextQuestion(2)">Nie</button>
             </div>
 
             <div class="question" id="question2" style="display: none;">
-                <p>Wolisz kwiaty czy czekoladki?</p>
-                <button class="btn" onclick="nextQuestion(3)">Kwiaty</button>
-                <button class="btn" onclick="nextQuestion(3)">Czekoladki</button>
+                <p>Na pewno????????</p>
+                <button class="btn" onclick="nextQuestion(3)">Tak</button>
+                <button class="btn" onclick="nextQuestion(3)">Nie</button>
             </div>
 
             <div class="question" id="question3" style="display: none;">
-                <p>Idealny film na wieczór?</p>
-                <button class="btn" onclick="showFinalMessage()">Komedia</button>
-                <button class="btn" onclick="showFinalMessage()">Romans</button>
+                <p>To jesteś w końcu czy nie?????</p>
+                <button class="btn" onclick="showFinalMessage()">Tak</button>
+                <button class="btn" onclick="showFinalMessage()">Nie</button>
             </div>
         </div>
 
         <div class="final-message" id="finalMessage">
-            <p>Czy zostaniesz moją walentynką? ❤️</p>
-            <button class="btn" onclick="alert('Hurra! ❤️')">Tak</button>
-            <button class="btn" onclick="alert('No co ty???? 😢')">Nie</button>
+            <p>Aaa czy zostaniesz moją walentynką? ❤️</p>
+            <button class="btn" onclick="heartsEffect()">Tak</button>
+            <button class="btn" onclick="alert('No co ty???????')">Nie</button>
         </div>
     </div>
 
@@ -90,6 +110,22 @@
         function showFinalMessage() {
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('finalMessage').style.display = 'block';
+        }
+
+        function heartsEffect() {
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+                heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }
         }
     </script>
 </body>
