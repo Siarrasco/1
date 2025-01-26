@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz dla Julii</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff4d4d;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #e63939;
+        }
+        .final-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz dla Julii</h1>
+        <p>Odpowiedz na pytania, a na końcu czeka na Ciebie niespodzianka!</p>
+
+        <div id="quiz">
+            <div class="question" id="question1">
+                <p>Co jest lepsze na randkę?</p>
+                <button class="btn" onclick="nextQuestion(2)">Kolacja</button>
+                <button class="btn" onclick="nextQuestion(2)">Spacer</button>
+            </div>
+
+            <div class="question" id="question2" style="display: none;">
+                <p>Wolisz kwiaty czy czekoladki?</p>
+                <button class="btn" onclick="nextQuestion(3)">Kwiaty</button>
+                <button class="btn" onclick="nextQuestion(3)">Czekoladki</button>
+            </div>
+
+            <div class="question" id="question3" style="display: none;">
+                <p>Idealny film na wieczór?</p>
+                <button class="btn" onclick="showFinalMessage()">Komedia</button>
+                <button class="btn" onclick="showFinalMessage()">Romans</button>
+            </div>
+        </div>
+
+        <div class="final-message" id="finalMessage">
+            <p>Czy zostaniesz moją walentynką? ❤️</p>
+            <button class="btn" onclick="alert('Hurra! ❤️')">Tak</button>
+            <button class="btn" onclick="alert('No co ty???? 😢')">Nie</button>
+        </div>
+    </div>
+
+    <script>
+        function nextQuestion(next) {
+            document.getElementById(`question${next - 1}`).style.display = 'none';
+            document.getElementById(`question${next}`).style.display = 'block';
+        }
+
+        function showFinalMessage() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('finalMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
